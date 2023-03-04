@@ -1,0 +1,276 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+:root {
+    font-size: 62.5%;
+}
+
+body {
+    font-size: 1.6rem;
+    font-family: 'Inter';
+    background-color: #292738;
+}
+
+#app {
+    column-gap: 3.2rem;
+    row-gap: 5.9rem;
+    width: fit-content;
+    min-width: 100vw;
+    height: fit-content;
+    min-height: 100vh;
+    margin: auto;
+    place-content: center;
+    padding: 2rem;
+}
+
+.grid {
+    display: grid;
+}
+
+.box {
+    padding: 1.9rem 2.8rem;
+    background: #363447;
+    box-shadow: 0.3rem 0.4rem 0.26rem rgba(0, 0, 0, 0.25);
+    border-radius: 1.6rem;
+    color: white;
+    line-height: 160%;
+    gap: 3.2rem;
+}
+
+.top {
+    font-weight: 600;
+    font-size: 2.4rem;
+    text-align: center;
+}
+
+.bottom {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    margin-top: auto;
+    font-weight: 500;
+    font-size: 14px;
+}
+
+.bottom .item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.bottom .item span:nth-child(1) {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.bottom .item span {
+    --bg-color: #4A4556;
+}
+
+.bottom .item span:nth-child(1)::before {
+    content: "";
+    width: 1.5rem;
+    height: 1.5rem;
+    display: block;
+    background: var(--bg-color);
+    border-radius: 999px;
+}
+
+.nps {
+    gap: 3.2rem;
+    text-align: center;
+}
+
+.nps .middle {
+    height: 19.7rem;
+    place-content: center;
+    justify-items: center;
+    gap: 1.6rem;
+    color: #81FBB8;
+}
+
+.nps .bottom {
+    gap: 1rem;
+}
+
+.middle {
+    display: grid;
+    place-content: center;
+    position: relative;
+}
+
+svg {
+    --circunference: 618 --percentage: 0;
+    width: 19.7rem;
+    height: 19.7rem;
+    transform: rotate(-90deg);
+}
+
+svg circle {
+    stroke-dasharray: 618;
+    stroke-dashoffset: 618;
+    stroke-width: 35;
+    fill: none;
+}
+
+svg circle:nth-child(1) {
+    stroke-dashoffset: 0;
+}
+
+svg circle:nth-child(2) {
+    stroke-dashoffset: calc(618 - (618 * var(--percentage))/100);
+    stroke-linecap: round;
+    animation: dunut 2s;
+}
+
+@keyframes dunut {
+    0% {
+        stroke-dasharray: 618;
+        stroke-dashoffset: 618;
+    }
+}
+
+.middle .content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.content h3 {
+    font-size: 3.14rem;
+}
+
+.text-left {
+    text-align: left;
+}
+
+.weekly-sell {
+    gap: 3.2rem;
+}
+
+.weekly-sell .wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 3.2rem;
+}
+
+.weekly-sell .left {
+    gap: 3.2rem;
+    grid-auto-flow: column;
+}
+
+.weekly-sell .left,
+.weekly-sell .right {
+    flex: 1;
+}
+
+.left .grid {
+    gap: 0.8rem;
+    font-weight: 500;
+    font-size: 20px;
+}
+
+.left .grid span {
+    font-size: 14px;
+    display: flex;
+    gap: 0.4rem;
+    align-items: center;
+
+}
+
+.left .grid span::before {
+    content: "";
+    width: 15px;
+    height: 15px;
+    display: block;
+
+}
+
+.left .most-sell span::before {
+    background: linear-gradient(180deg, #81FBB8 0%, #28C76F 100%);
+    clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+}
+
+.left .less-sell span::before {
+    background: linear-gradient(180deg, #EA5455 0%, #FEB692 100%);
+    clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+    transform: rotate(180deg);
+}
+
+.bars {
+    display: flex;
+    gap: calc(3vw + 1rem);
+    align-items: flex-end;
+    position: relative;
+}
+
+.bars::before {
+    content: "";
+    display: block;
+    height: 0.3rem;
+    width: 100%;
+    border-radius: 100;
+    position: absolute;
+    background: #4A4556;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 0;
+}
+
+.bars-wrapper {
+    display: grid;
+    grid-template-rows: 20rem 1.6rem;
+    justify-items: center;
+    gap: 0.5rem;
+    z-index: 1;
+}
+
+.bar {
+    width: 1.5rem;
+    background-color: #81FBB8;
+    height: var(--bar-size);
+    min-height: 0.5rem;
+    border-radius: 100px;
+    animation: up-bars 2s;
+    align-self: end;
+
+}
+
+@keyframes up-bars {
+    0% {
+        height: 0;
+    }
+}
+
+
+@media (min-width: 1200px) {
+    #app {
+        grid-template-columns: 29.6rem max-content max-content;
+        grid-template-rows: max-content;
+    }
+
+    .box:nth-child(4) {
+        grid-column: 1/4;
+    }
+
+    .weekly-sell .wrapper {
+        flex-direction: row;
+    }
+
+    .weekly-sell .left {
+        grid-auto-flow: initial;
+    }
+
+    .bars{
+        gap: 5.9rem;
+    }
+
+}
